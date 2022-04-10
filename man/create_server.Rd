@@ -7,8 +7,8 @@
 create_server(
   index_path = NULL,
   port = 8080,
-  static_paths = NULL,
-  routes = NULL
+  routes = NULL,
+  static_paths = NULL
 )
 }
 \arguments{
@@ -17,13 +17,13 @@ root path (i.e. "\"). The root html file is assumed to be named "index.html".}
 
 \item{port}{An integer that defines the port number for the server. The default is 8080.}
 
-\item{static_paths}{A named list where the string name references the web route (e.g. a web path "/assets", "/styles", "/html")
-and the corresponding string value references a \strong{full} static directory path. The server will host static
-resources (css, html, etc) in these directories.}
+\item{routes}{A vector of \code{RserverPkg::Route} objects that define the request paths that the server will respond to.
+Each \code{RserverPkg::Route} object should define the path, callback function that optionally returns content, and the
+content's MIME content type. The callback function can be defined to receive a \code{RserverPkg::Request} object argument.}
 
-\item{routes}{A named list where the string name references specific web routes and the value references an R callback function
-that optionally returns a JSON formatted string for the response body. The callback should have a list argument where it will receive
-information on the request including the request method, body, type, and query string upon which it can act on.}
+\item{static_paths}{A named list that defines the locations of static resources (.css, .html, .js files) for hosting by the
+server. The list name is the web path (e.g. "/content") and the value is the full directory path to the resources
+(e.g. F:/web_server/content).}
 }
 \value{
 A \code{httpuv::WebServer}
@@ -31,10 +31,11 @@ A \code{httpuv::WebServer}
 \description{
 The package is based on \href{https://cran.r-project.org/web/packages/httpuv/index.html}{httpuv::}.
  It is designed to host static resources such as html, javascript, css, etc along with specific route requests
- to perform various R based actions or respond with JSON formatted content.  The server is designed to work in a local
- host environment as part of an html/javascript project that needs a link to R language capabilities and its
- associated packages. As per the \code{httpuv::} documentation, the server can be stopped by calling
- \code{httpuv::stopServer(server=name_of_server)}. Also to list the current running server(s) call \code{httpuv::listServers()}.
+ to perform various R based actions or respond with various content(i.g. JSON strings, images, etc).  The server
+ is designed to work in a local host environment (i.e. url = 127.0.0.1) as part of an html/javascript project that
+ needs a link to R language capabilities and its associated packages. As per the \code{httpuv::} documentation, the
+ server can be stopped by calling \code{httpuv::stopServer(server=name_of_server)}. Also to list the current running
+ server(s) call \code{httpuv::listServers()}.
 }
 \author{
 Rick Dean

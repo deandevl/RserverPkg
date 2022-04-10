@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8"/>
     <title>Flights</title>
-    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
     <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   </head>
 
@@ -18,7 +18,7 @@
       'use strict';
 
       const get_column_names = async () => {
-        const column_names_url = 'http://127.0.0.1:8080/flight_columns?get=column_names';
+        const column_names_url = 'http://127.0.0.1:8080/flight_info';
         try {
           const resp = await fetch(column_names_url, {
               method: 'GET',
@@ -32,7 +32,7 @@
             const column_names_text = await resp.text();
             return Promise.resolve(column_names_text);
           }else {
-            return Promise.reject(`get column names error. Status = ${resp.status}`);
+            return Promise.reject(`get_column_names() error. Status = ${resp.status}`);
           }
         }catch(err){
           console.log(err);
