@@ -9,7 +9,7 @@ RserverPkg/demos/flight_server/flight_server.R
 
 The server will start with a short message saying that it is listening on port 8080.  From any browser enter the address 127.0.0.1:8080 to see the hosted index.html. Click the button to start a javascript GET Fetch request for the variable names of the csv file.
 
-The second demonstrates how the httpuv based R server wrangles the same csv flights file to show a [d3](https://github.com/d3/d3) based histogram of arrival delays for various carriers. Along with d3, the server hosts a concise, neat index.html bundle using [Parcel](https://parceljs.org/). To start the server (named airline_server) --- in an R console run:
+The second demonstrates how the httpuv based R server wrangles the same csv flights file to show a [d3](https://github.com/d3/d3) based histogram of arrival delays for various carriers. Along with d3, the server hosts a concise, neat `index.html` in the `prod` directory using the [Parcel](https://parceljs.org/) bundler. To start the server (named `airline_server`) --- in an R console run:
 
 ```
 RserverPkg/demos/airline_server_d3/airline_server.R

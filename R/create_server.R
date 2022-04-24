@@ -43,7 +43,7 @@ create_server <- function(
   if(!is.null(static_paths)){
     web_path_names <- names(static_paths)
     for(path in web_path_names){
-      static_path_lst[[path]] = httpuv::staticPath(static_paths[[path]], indexhtml = FALSE)
+      static_path_lst[[path]] <- httpuv::staticPath(static_paths[[path]], indexhtml = FALSE)
     }
   }
 
@@ -67,7 +67,7 @@ create_server <- function(
 
           for(i in seq_along(query_lst)){
             parts <- strsplit(query_lst[[i]], "=", fixed = TRUE)[[1]]
-            query_final_lst[parts[[1]]] <- parts[[2]]
+            query_final_lst[parts[[1]]] <- URLdecode(parts[[2]])
           }
         }
 
