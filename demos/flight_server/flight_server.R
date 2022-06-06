@@ -27,12 +27,14 @@ route <- RserverPkg::Route$new(
   content_type = "text/plain"
 )
 
-flight_server <- RserverPkg::create_server(
+flight_server <- RserverPkg::Server$new(
   index_path = index_path,
   routes = c(route),
   static_paths = static_paths
 )
 
-# httpuv::listServers()
+flight_server$start()
 
-# httpuv::stopServer(server = flight_server)
+flight_server$list_servers()
+
+flight_server$stop()

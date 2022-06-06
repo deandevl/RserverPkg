@@ -2,6 +2,7 @@
 
 export(Request)
 export(Route)
+export(Server)
 export(create_server)
 import(R6)
 import(httpuv)
